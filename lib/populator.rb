@@ -23,7 +23,6 @@ class Populator
   def query batch
     values = to_sql_values batch
     q = "INSERT INTO #{@klass.table_name} (#{@columns.map(&:to_s).join(',')}) VALUES #{values}"
-    puts q
     q
   end
 

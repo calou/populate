@@ -16,7 +16,7 @@ class Populator
 
   def to_sql hash
     @columns.inject([]) do |arr, column|
-      arr.push "#{ActiveRecord::Base::sanitize(hash[column])}"
+      arr.push "#{ActiveRecord::Base::sanitize(hash[column])} "
     end.join(",")
   end
 
@@ -30,8 +30,10 @@ class Populator
 
 
   def execute batch_size = 512
-    @array.each_slice(batch_size) do |batch|
-      @klass.connection.execute query(batch)
+    ActiveRecord::Base.transaction do
+      @array.each_slice(batch_size) do |batch|
+        @klass.connection.execute query(batch)
+      end
     end
   end
 

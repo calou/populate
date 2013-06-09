@@ -12,13 +12,14 @@ describe Populate do
   	SQLite3::Database.new(conf[:database]) do |db|
   		rows = db.execute <<-SQL
   		  create table klasses (
+          id integer,
   		    p1 varchar(30),
   		    p2 Date
   		  );
   			SQL
   	end
   end
-  
+
   after(:all) do
   	File.delete(conf[:database])
   end

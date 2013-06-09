@@ -4,7 +4,7 @@ require 'active_record'
 class Populator
   def initialize( klass, array)
     @klass = klass
-    @columns = @klass.columns.map{ |column| column.name.to_sym }
+    @columns = @klass.columns.map{ |column| column.name.to_sym }.delete_if{|column| [:id, :created_at, :updated_at].include?(column)  }
     @array = array
   end
 

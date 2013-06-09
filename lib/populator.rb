@@ -16,7 +16,7 @@ class Populator
 
   def to_sql hash
     @columns.inject([]) do |arr, column|
-      arr.push "'#{hash[column]}'"
+      arr.push "#{ActiveRecord::Base::sanitize(hash[column])}"
     end.join(",")
   end
 

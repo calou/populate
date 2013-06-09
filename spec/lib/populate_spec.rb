@@ -25,7 +25,7 @@ describe Populate do
   end
   it 'should create database entries' do
   	lambda {
-  		Klass.populate([{:p1 => "Value", :p2 => Date.new(2010, 6, 3)},{:p1 => "Value", :p2 => Date.new(2000, 5, 17)}])
+  		Klass.populate([{:p1 => "Value' # `", :p2 => Date.new(2010, 6, 3)},{:p1 => "Value", :p2 => Date.new(2000, 5, 17)}])
   	}.should change(Klass, :count).by(2)
   end
 end

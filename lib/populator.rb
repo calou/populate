@@ -4,7 +4,7 @@ require 'active_record'
 class Populator
   def initialize( klass, array)
     @klass = klass
-    @columns = @klass.columns.map{ |column| column.name.to_sym }.delete_if{|column| [:id, :created_at, :updated_at].include?(column)  }
+    @columns = @klass.columns.map{ |column| column.name.to_sym }.delete_if{|column| :id == column  }
     @array = array
   end
 
@@ -16,7 +16,8 @@ class Populator
 
   def to_sql hash
     @columns.inject([]) do |arr, column|
-      arr.push "#{ActiveRecord::Base::sanitize(hash[column])} "
+      value = [ :created_at, :updated_at ].include?(column) ? Time.now : hash[column]
+      arr.push "#{ActiveRecord::Base::sanitize(value)}"
     end.join(",")
   end
 

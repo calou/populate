@@ -10,13 +10,14 @@ class Database
   }
   def self.create
     SQLite3::Database.new(PROPERTIES[:database]) do |db|
-      rows = db.execute <<-SQL
+      db.execute <<-SQL
         create table dummy_classes (
           id int(11),
           p1 varchar(30),
           p2 date
         );
-        
+      SQL
+      db.execute <<-SQL
         create table timestamp_dummy_classes (
           id int(11),
           p1 varchar(30),

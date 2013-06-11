@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Populate::VERSION
   spec.authors       = ["Sébastien Gruchet"]
   spec.email         = ["gruchet@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Perform mass sql insert}
+  spec.summary       = %q{Perform mass sql insert}
   spec.homepage      = ""
   spec.license       = "MIT"
 

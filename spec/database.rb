@@ -1,3 +1,6 @@
+require 'active_record'
+require 'sqlite3'
+
 class Database
   PROPERTIES = {
     adapter:  'sqlite3',

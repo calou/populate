@@ -1,6 +1,4 @@
 require 'populate'
-require 'active_record'
-require 'sqlite3'
 require 'database'
 require 'dummy_classes'
 
